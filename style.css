@@ -217,6 +217,10 @@ body {
   opacity: 0.8;
 }
 
+.item.hidden {
+  display: none;
+}
+
 @media (max-width: 768px) {
   body {
     padding: 16px;

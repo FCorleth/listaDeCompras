@@ -1,6 +1,7 @@
 const input = document.getElementById("itemInput");
 const button = document.getElementById("addButton");
 const list = document.getElementById("itemsList");
+const listItem = document.querySelector(".item");
 
 button.onclick = () => {
   const text = input.value.trim();
@@ -43,8 +44,14 @@ const addAtributtes = (text) => {
   return { li, span, input, div, button, img };
 };
 
+const hideItem = (listItem) => {
+  listItem.classList.add("hidden");
+};
+
 const addItem = (text) => {
   const { li, span, input, div, button, img } = addAtributtes(text);
+
+  button.onclick = () => hideItem(li);
 
   button.append(img);
   div.append(input);
@@ -53,3 +60,10 @@ const addItem = (text) => {
   li.append(button);
   list.append(li);
 };
+
+document.querySelectorAll(".delete-button").forEach((btn) => {
+  btn.onclick = () => {
+    const li = btn.closest(".item");
+    hideItem(li);
+  };
+});
